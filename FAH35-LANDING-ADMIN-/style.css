@@ -1,0 +1,469 @@
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100%;
+  background: #f8fbfd;
+  transition: background-color 0.3s ease;
+}
+
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px; /* Collapsed width */
+  height: 100vh;
+  background-color: #ffffff;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.sidebar:hover {
+  width: 200px; /* Expanded width on hover */
+}
+
+
+/* Logo and Menu Icon */
+.logo {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  /*transition: padding 0.3s ease; */
+}
+
+
+
+.logo .logo-name {
+  color: #333;
+  font-size: 25px;
+  font-weight: 500;
+  display: none; /* Hidden initially */
+  margin-left: 30px; /* Shift text slightly to the right */
+}
+
+.sidebar:hover .logo .logo-name {
+  display: inline;
+}
+
+.menu-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #707070;
+  margin-right: 8px;
+  z-index: 1000;
+  position: fixed;
+  top: 20px;
+  left: 10px;
+}
+
+
+
+/* Sidebar Content */
+.sidebar-content .list {
+  list-style: none;
+  padding: 10px 0;
+}
+
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #707070;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link .icon {
+  font-size: 24px;
+  color: #707070;
+  margin-right: 10px;
+}
+
+.nav-link:hover {
+  background-color: #4070f4;
+  color: #ffffff;
+}
+
+.nav-link:hover .icon {
+  color: #ffffff;
+}
+
+/* Text within Sidebar - hidden initially */
+.link {
+  display: none;
+}
+
+.sidebar:hover .link {
+  display: inline;
+}
+/* Bottom Content (Logout and Dark Mode Toggle) */
+.bottom-content {
+  margin-top: auto;
+}
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: margin-left 0.3s ease;
+  position: fixed;
+  top: 5px;
+  left: 65px;
+  right: 20px;
+  z-index: 1000;
+  border-radius: 15px;
+}
+.dark-mode .header {
+  background: #333;
+  color: #fff;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+  border-radius: 10px;
+  padding: 5px;
+  width: 1500px;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 8px;
+  border-radius: 100px;
+  flex-grow: 1;
+}
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+.header-icons .icon {
+  font-size: 24px;
+  margin-left: 20px;
+  cursor: pointer;
+  color: #707070;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: 20px;
+}
+.profile-icon img {
+  width: 100%;
+  height: auto;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1; /* Mengisi ruang yang tersisa */
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: 60px; /* Margin awal saat sidebar tertutup */
+}
+
+.main-content {
+  transition: margin-left 0.3s ease;
+}
+.sidebar:hover ~ .main-content {
+  margin-left: 200px; /* Menggeser main content saat sidebar terbuka */
+}
+.sidebar:hover ~ .header,
+.sidebar:hover ~ .main-content {
+  margin-left: 200px;
+}
+/* Responsive Sidebar for Smaller Screens */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 0;
+  }
+  
+  .sidebar:hover {
+    width: 150px;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .sidebar:hover ~ .main-content {
+    margin-left: 150px;
+  }
+}
+/* Sidebar Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 160px;
+  border-radius: 8px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #fff;
+  padding: 14px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #4070f4;
+}
+
+/* Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+  margin-top: 100px; /* Space between header and card container */
+
+}
+
+.card {
+  width: calc(50% - 10px); /* Adjust for two-column layout on larger screens */
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.blue {
+  background-color: #4A90E2;
+}
+
+.light-blue {
+  background-color: #A4D8E1;
+}
+
+.purple {
+  background-color: #9B59B6;
+}
+
+.green {
+  background-color: #1ABC9C;
+}
+
+/* Chart and Budget Section */
+.charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 20px;
+}
+
+/* Pie Chart Container */
+.pie-chart {
+  width: 300px;
+  height: 300px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto; /* Centering the pie chart */
+}
+
+/* Removing scaling effect on hover */
+.pie-chart:hover {
+  transform: none; /* Disable scaling on hover */
+}
+
+.pie-chart .label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Enlarge effect on hover for charts */
+.chart, .pie-chart {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.chart:hover, .pie-chart:hover {
+  transform: scale(1.1); /* Scale up to 110% */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Add shadow for emphasis */
+}
+
+
+.chart:hover {
+  transform: scale(1.05);
+}
+
+.charts-container {  
+  display: flex;  
+  flex-wrap: wrap;  
+  justify-content: space-between;  
+  margin-top: 20px;  
+  padding: 20px;
+}  
+
+.chart {  
+  flex: 1;  
+  margin-right: 20px;  
+  padding: 20px;  
+  border-radius: 10px;  
+  background-color: #48eef1;  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+}  
+
+.chart-controls {  
+  display: flex;  
+  justify-content: space-between;  
+  margin-bottom: 20px;  
+}  
+
+.chart-placeholder {  
+  height: 200px; /* Tinggi untuk placeholder grafik */  
+  background-color: #e0e0e0;  
+  border-radius: 10px;  
+}  
+
+.budget-container {  
+  margin-top: 20px;
+  display: flex;  
+  flex-direction: column;  
+  flex: 1;
+}  
+
+.budget {  
+  background-color: #f9f9f9;  
+  border-radius: 10px;  
+  padding: 20px;  
+  margin-bottom: 20px;  
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  
+  text-align: center;  
+}  
+
+.progress-circle {  
+  width: 100px;  
+  height: 100px;  
+  border-radius: 50%;  
+  border: 10px solid #e0e0e0;  
+  display: flex;  
+  align-items: center;  
+  justify-content: center;  
+  position: relative;  
+  margin: 0 auto 10px;  
+}  
+
+.progress-circle span {  
+  position: absolute;  
+  font-size: 24px;  
+  font-weight: bold;  
+}
+
+.chart-placeholder {
+  width: 100%;
+  height: 400px;
+  background-color: rgba(240, 240, 240, 0.9);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-placeholder:hover {
+  transform: scale(1.05); /* Membesarkan placeholder sebesar 5% */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Menambah bayangan untuk efek kedalaman */
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.pie-chart {  
+  width: 300px;   
+  height: 300px;  
+  background-color: #e0e0e0; 
+  border-radius: 0; 
+  position: relative; 
+  margin: 0 auto; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}  
+
+.pie-chart .label {  
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  font-size: 16px; 
+  font-weight: bold; 
+  color: #333; 
+}
+
+@media (max-width: 768px) {
+  /* Sidebar tersembunyi secara default di mobile */
+  .sidebar {
+      width: 0;
+  }
+  .sidebar:hover {
+      width: 150px;
+  }
+
+  /* Konten utama melebar saat sidebar tersembunyi */
+  .main-content {
+      margin-left: 0;
+  }
+  
+  /* Menggeser konten utama saat sidebar tampil */
+  .sidebar:hover ~ .main-content {
+      margin-left: 150px;
+  }
+  .card {
+    width: 100%; /* Full width on smaller screens */
+    margin-bottom: 20px;
+  }
+}
+
+.container {
+  display: flex;
+  transition: all 0.3s ease;
+}
+
+#myBarChart:hover {
+  cursor: pointer; /* Optional: changes cursor to pointer when hovering over the chart */
+}
+
+.chartjs-render-monitor {
+  transition: transform 0.3s ease;
+}
